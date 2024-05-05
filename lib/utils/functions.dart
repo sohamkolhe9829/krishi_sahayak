@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:intl/intl.dart';
@@ -46,6 +45,6 @@ String timeAgo(DateTime givenTime) {
 showLoadingWidget(context) {
   showDialog(
     context: context,
-    builder: (context) => CustomCircularLoading(),
+    builder: (context) => const CustomCircularLoading(),
   );
 }

@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:krishi_sahayak/screens/admin/add_seasonal_crop.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class AdminHome extends StatelessWidget {
+  const AdminHome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +19,11 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Good Morning,",
+                    "Welcome back,",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                   const Text(
-                    "Soham Kolhe",
+                    "Admin",
                     style: TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 20),
@@ -41,20 +44,53 @@ class HomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/winter.jfif?alt=media&token=4ba81afe-6d4d-417a-ae11-b1eade32a375",
-                          title: "Winter",
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    AddSeasonalCropScreen(title: "Winter"),
+                              ),
+                            );
+                          },
+                          child: HomeCardWidget(
+                            imageURL:
+                                "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/winter.jfif?alt=media&token=4ba81afe-6d4d-417a-ae11-b1eade32a375",
+                            title: "Winter",
+                          ),
                         ),
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/summer.jpg?alt=media&token=c404a700-e8bb-4f99-8108-b5d829e5f2b4",
-                          title: "Summer",
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    AddSeasonalCropScreen(title: "Summer"),
+                              ),
+                            );
+                          },
+                          child: HomeCardWidget(
+                            imageURL:
+                                "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/summer.jpg?alt=media&token=c404a700-e8bb-4f99-8108-b5d829e5f2b4",
+                            title: "Summer",
+                          ),
                         ),
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/monsoon.jfif?alt=media&token=cd55dbf1-fdbb-48df-92b1-1e91daa5468a",
-                          title: "Monsoon",
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    AddSeasonalCropScreen(title: "Monsoon"),
+                              ),
+                            );
+                          },
+                          child: HomeCardWidget(
+                            imageURL:
+                                "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/monsoon.jfif?alt=media&token=cd55dbf1-fdbb-48df-92b1-1e91daa5468a",
+                            title: "Monsoon",
+                          ),
                         ),
                       ],
                     ),

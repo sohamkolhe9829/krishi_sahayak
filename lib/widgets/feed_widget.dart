@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 
 import '../utils/functions.dart';
 
+// ignore: must_be_immutable
 class FeedWidget extends StatelessWidget {
   Post post;
   FeedWidget({
@@ -107,7 +108,7 @@ class FeedWidget extends StatelessWidget {
                             post.likes.contains(currentUser.uid));
                       },
                       icon: Icon(
-                        post.likes.contains(currentUser!.uid)
+                        post.likes.contains(currentUser.uid)
                             ? Icons.thumb_up_alt
                             : Icons.thumb_up_alt_outlined,
                         size: 27,

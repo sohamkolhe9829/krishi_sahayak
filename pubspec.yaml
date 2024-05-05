@@ -54,7 +54,9 @@ dependencies:
   image_picker: ^1.1.1
   firebase_storage: ^11.7.4
   fluttertoast: ^8.2.5
-  intl: ^0.19.0
+  intl: ^0.18.1
+  flutter_quill: ^9.3.10
+  quill_html_converter: ^9.3.10
 
 dev_dependencies:
   flutter_test:

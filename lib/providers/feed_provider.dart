@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:krishi_sahayak/screens/home_container.dart';
-import 'package:krishi_sahayak/utils/functions.dart';
 
 import '../models/post_model.dart';
 
@@ -19,9 +18,7 @@ class FeedProvider with ChangeNotifier {
       for (var i = 0; i < images.length; i++) {
         selectedFiles.add(File(images[i].path));
       }
-    } else {
-      print('No images selected.');
-    }
+    } else {}
     notifyListeners();
   }
 

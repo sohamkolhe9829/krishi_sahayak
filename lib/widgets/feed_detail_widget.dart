@@ -1,18 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:krishi_sahayak/models/post_model.dart';
 import 'package:krishi_sahayak/providers/feed_provider.dart';
-import 'package:krishi_sahayak/screens/feed/post_detail.dart';
 import 'package:krishi_sahayak/widgets/custom_loading.dart';
 import 'package:krishi_sahayak/widgets/net_image_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/functions.dart';
 
+// ignore: must_be_immutable
 class FeedDetailWidget extends StatelessWidget {
   Post post;
   FeedDetailWidget({
@@ -54,7 +53,7 @@ class FeedDetailWidget extends StatelessWidget {
                           },
                           icon: const Icon(Icons.more_vert_outlined),
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                 ),
                 SelectableLinkify(
                   onOpen: launchFeedURL,
@@ -74,7 +73,7 @@ class FeedDetailWidget extends StatelessWidget {
                 // ),
                 const SizedBox(height: 10),
                 post.imageUrls.isEmpty
-                    ? SizedBox()
+                    ? const SizedBox()
                     : AspectRatio(
                         aspectRatio: 16 / 9,
                         child: PageView.builder(
@@ -207,8 +206,8 @@ class FeedDetailWidget extends StatelessWidget {
             onTap: () {
               feedProvider.deletePost(context, postId);
             },
-            leading: Icon(Icons.delete),
-            title: Text("Delete post"),
+            leading: const Icon(Icons.delete),
+            title: const Text("Delete post"),
           ),
         );
       },

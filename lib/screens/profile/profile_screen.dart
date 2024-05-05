@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:krishi_sahayak/providers/auth_service_provider.dart';
+import 'package:krishi_sahayak/screens/profile/about_us_screen.dart';
 import 'package:krishi_sahayak/screens/profile/my_post_screen.dart';
 import 'package:krishi_sahayak/screens/profile/saved_post_screen.dart';
 
@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
         ),
         body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               Card(
@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              currentUser!.displayName!,
+                              currentUser.displayName!,
                               style: TextStyle(
                                 fontSize: 22,
                                 color: Theme.of(context)
@@ -70,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "${currentUser.email!}",
+                              currentUser.email!,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: 15,
@@ -92,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => MyPostScreen(),
+                      builder: (_) => const MyPostScreen(),
                     ),
                   );
                 },
@@ -129,8 +129,8 @@ class ProfileScreen extends StatelessWidget {
                 title: "About US",
                 icon: Icons.info,
                 callBack: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => AboutUs()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const AboutUs()));
                 },
               ),
               _buildprofileListTile(

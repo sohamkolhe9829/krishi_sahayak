@@ -4,9 +4,10 @@ import 'package:krishi_sahayak/screens/feed/chat_screen.dart';
 import 'package:krishi_sahayak/screens/home_screen.dart';
 import 'package:krishi_sahayak/screens/profile/profile_screen.dart';
 
+// ignore: must_be_immutable
 class HomeContainer extends StatefulWidget {
   int index;
-  HomeContainer({Key? key, required this.index}) : super(key: key);
+  HomeContainer({super.key, required this.index});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -24,7 +25,6 @@ class _HomeContainerState extends State<HomeContainer> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(() {
       pageIndex = widget.index;
@@ -33,10 +33,12 @@ class _HomeContainerState extends State<HomeContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: pages[pageIndex],
-      bottomNavigationBar: buildMyNavBar(context),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: pages[pageIndex],
+        bottomNavigationBar: buildMyNavBar(context),
+      ),
     );
   }
 
@@ -134,6 +136,7 @@ class _HomeContainerState extends State<HomeContainer> {
   }
 }
 
+// ignore: must_be_immutable
 class NavBarItemWidget extends StatelessWidget {
   IconData icon;
   String title;

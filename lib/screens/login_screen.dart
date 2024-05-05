@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:krishi_sahayak/providers/auth_service_provider.dart';
 import 'package:krishi_sahayak/screens/home_container.dart';
-import 'package:krishi_sahayak/screens/home_screen.dart';
 import 'package:krishi_sahayak/utils/functions.dart';
 import 'package:krishi_sahayak/utils/sharedPreferences_service.dart';
 import 'package:provider/provider.dart';
@@ -14,77 +13,79 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 60),
-              Image.asset('assets/illuistrations/login.png'),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  "Let’s expand knowledge of farming with experienced and local farmers ",
-                  textAlign: TextAlign.center,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 60),
+                Image.asset('assets/illuistrations/login.png'),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Let’s expand knowledge of farming with experienced and local farmers ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  "Let’s begin...... ",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 24,
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                "Let’s begin...... ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
+                const SizedBox(height: 40),
+                SocialLoginButton(
+                  buttonType: SocialLoginButtonType.google,
+                  onPressed: () {
+                    googleLogin(context);
+                  },
                 ),
-              ),
-              const SizedBox(height: 40),
-              SocialLoginButton(
-                buttonType: SocialLoginButtonType.google,
-                onPressed: () {
-                  googleLogin(context);
-                },
-              ),
-              // LoginButtons(
-              //   icon: "google",
-              //   title: "Google",
-              //   callBack: () {
-              //     //Google login function calling
-              //     googleLogin(context);
-              //   },
-              // ),
-              const SizedBox(height: 15),
-              const Row(
-                children: [
-                  Expanded(
-                    child: Divider(),
-                  ),
-                  Text("  OR  "),
-                  Expanded(
-                    child: Divider(),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              SocialLoginButton(
-                buttonType: SocialLoginButtonType.facebook,
-                onPressed: () {
-                  facebookLogin(context);
-                },
-              ),
-              // LoginButtons(
-              //   icon: "facebook",
-              //   title: "Facebook",
-              //   callBack: () {
-              //     facebookLogin(context);
-              //   },
-              // ),
-            ],
+                // LoginButtons(
+                //   icon: "google",
+                //   title: "Google",
+                //   callBack: () {
+                //     //Google login function calling
+                //     googleLogin(context);
+                //   },
+                // ),
+                const SizedBox(height: 15),
+                const Row(
+                  children: [
+                    Expanded(
+                      child: Divider(),
+                    ),
+                    Text("  OR  "),
+                    Expanded(
+                      child: Divider(),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                SocialLoginButton(
+                  buttonType: SocialLoginButtonType.facebook,
+                  onPressed: () {
+                    facebookLogin(context);
+                  },
+                ),
+                // LoginButtons(
+                //   icon: "facebook",
+                //   title: "Facebook",
+                //   callBack: () {
+                //     facebookLogin(context);
+                //   },
+                // ),
+              ],
+            ),
           ),
         ),
       ),

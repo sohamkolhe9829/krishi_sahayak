@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../models/post_model.dart';
 import '../../widgets/custom_loading.dart';
 
+// ignore: must_be_immutable
 class PostDetailScreen extends StatelessWidget {
   String postId;
   PostDetailScreen({

@@ -42,22 +42,24 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "Krishi Sahayak",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: const Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Krishi Sahayak",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: 5),
-            Text("Empowering Indian Farmers"),
-          ],
+              SizedBox(height: 5),
+              Text("Empowering Indian Farmers"),
+            ],
+          ),
         ),
       ),
     );
