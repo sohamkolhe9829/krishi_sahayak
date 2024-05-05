@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "199993499194",
+    "project_id": "krishi-sahayak-190a1",
+    "storage_bucket": "krishi-sahayak-190a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199993499194:android:2f033f154091f21cd1df03",
+        "android_client_info": {
+          "package_name": "com.appiwaystudio.krishi_sahayak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199993499194-e80971h361sdgiuo7pvltm9ug8bav6ab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appiwaystudio.krishi_sahayak",
+            "certificate_hash": "2a328a7cd243a07720e02039a2f4faa2fe3026e5"
+          }
+        },
+        {
+          "client_id": "199993499194-a2mqh8rn21urmc1dekml5j1jekjeigd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKxElFK_jHD2qFXCJC9GJIzkeLaABgbP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199993499194-a2mqh8rn21urmc1dekml5j1jekjeigd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
