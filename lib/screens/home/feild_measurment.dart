@@ -32,6 +32,9 @@ class _FeildMeasurmentScreenState extends State<FeildMeasurmentScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const Text(
+                  "Note*\n1. Start at the corder of your feild.\n2. Use 'Add current position' to add feild marks for measurment\n",
+                ),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -68,7 +71,7 @@ class _FeildMeasurmentScreenState extends State<FeildMeasurmentScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
-                Divider(),
+                const Divider(),
                 const SizedBox(height: 20),
                 Table(
                   children: [

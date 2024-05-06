@@ -20,6 +20,12 @@ class FeildMeasurmentProvider with ChangeNotifier {
   double bigha = 0;
 
   measureFeild() {
+    points.add(
+      maps_toolkit.LatLng(
+        points[0].latitude,
+        points[0].longitude,
+      ),
+    );
     areaInSquareMeters = maps_toolkit.SphericalUtil.computeArea(points);
     convertArea(areaInSquareMeters.toDouble());
     notifyListeners();
