@@ -1,17 +1,20 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:krishi_sahayak/providers/admin_provider.dart';
 import 'package:krishi_sahayak/widgets/custom_button.dart';
+import 'package:provider/provider.dart';
 import 'package:quill_html_converter/quill_html_converter.dart';
 
 // ignore: must_be_immutable
 class AddSeasonalCropScreen extends StatefulWidget {
   String title;
+  String content;
   AddSeasonalCropScreen({
     super.key,
     required this.title,
+    required this.content,
   });
 
   @override
@@ -19,56 +22,91 @@ class AddSeasonalCropScreen extends StatefulWidget {
 }
 
 class _AddSeasonalCropScreenState extends State<AddSeasonalCropScreen> {
-  QuillController _controller = QuillController.basic();
+  final QuillController _controller = QuillController.basic();
+  @override
+  void initState() {
+    super.initState();
+    var text = widget.content;
+    text = text.replaceAll(RegExp(r'<br/>'), '&#8203;</br>');
+    var html = Document.fromHtml(text);
+    var delta = html.toDelta();
+    _controller.document = Document.fromDelta(delta);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back_ios)),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              QuillToolbar.simple(
-                configurations: QuillSimpleToolbarConfigurations(
-                  controller: _controller,
-                  sharedConfigurations: const QuillSharedConfigurations(
-                    locale: Locale('en'),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: QuillEditor.basic(
-                  configurations: QuillEditorConfigurations(
+      child: Consumer<AdminProvider>(
+        builder: (context, adminProvider, child) => Scaffold(
+          appBar: AppBar(
+            title: Text(widget.title),
+            leading: IconButton(
+                onPressed: () {
+                  adminProvider.clearData();
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                QuillToolbar.simple(
+                  configurations: QuillSimpleToolbarConfigurations(
                     controller: _controller,
                     sharedConfigurations: const QuillSharedConfigurations(
                       locale: Locale('en'),
                     ),
                   ),
                 ),
-              ),
-              Row(
-                children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.add_a_photo)),
-                  Expanded(
-                    child: CustomButtonWidget(
-                      title: "Upload data",
-                      callBack: () {
-                        print(jsonEncode(
-                            _controller.document.toDelta().toHtml()));
-                      },
+                Expanded(
+                  child: QuillEditor.basic(
+                    configurations: QuillEditorConfigurations(
+                      controller: _controller,
+                      sharedConfigurations: const QuillSharedConfigurations(
+                        locale: Locale('en'),
+                      ),
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+                adminProvider.selectedFiles.isEmpty
+                    ? const SizedBox()
+                    : AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: PageView.builder(
+                          itemCount: adminProvider.selectedFiles.length,
+                          itemBuilder: (context, index) {
+                            return Image.file(
+                              adminProvider.selectedFiles[index],
+                              fit: BoxFit.cover,
+                            );
+                          },
+                        ),
+                      ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        adminProvider.pickMultipleImages();
+                      },
+                      icon: const Icon(Icons.add_a_photo),
+                    ),
+                    Expanded(
+                      child: CustomButtonWidget(
+                        title: "Upload data",
+                        callBack: () {
+                          adminProvider.addSeasonalCropInformation(
+                            context,
+                            widget.title,
+                            jsonEncode(_controller.document.toDelta().toHtml()),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

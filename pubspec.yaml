@@ -57,6 +57,9 @@ dependencies:
   intl: ^0.18.1
   flutter_quill: ^9.3.10
   quill_html_converter: ^9.3.10
+  flutter_html: ^3.0.0-beta.2
+  maps_toolkit: ^3.0.0
+  geolocator: ^11.0.0
 
 dev_dependencies:
   flutter_test:

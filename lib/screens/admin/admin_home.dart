@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:krishi_sahayak/screens/admin/add_seasonal_crop.dart';
+import 'package:krishi_sahayak/screens/admin/admin_crops_information.dart';
+import 'package:krishi_sahayak/screens/admin/view_seasonal_crop.dart';
 
 class AdminHome extends StatelessWidget {
   const AdminHome({super.key});
@@ -50,7 +52,7 @@ class AdminHome extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (_) =>
-                                    AddSeasonalCropScreen(title: "Winter"),
+                                    ViewSeasonalCrop(title: "Winter"),
                               ),
                             );
                           },
@@ -66,7 +68,7 @@ class AdminHome extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (_) =>
-                                    AddSeasonalCropScreen(title: "Summer"),
+                                    ViewSeasonalCrop(title: "Summer"),
                               ),
                             );
                           },
@@ -82,7 +84,7 @@ class AdminHome extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (_) =>
-                                    AddSeasonalCropScreen(title: "Monsoon"),
+                                    ViewSeasonalCrop(title: "Monsoon"),
                               ),
                             );
                           },
@@ -100,53 +102,24 @@ class AdminHome extends StatelessWidget {
                     "Crops Informations",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/banana.jfif?alt=media&token=4eab6ffd-7262-4e27-b2cb-c315669074da",
-                          title: "Banana",
-                        ),
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/wheat.jfif?alt=media&token=9aaf4d7d-c72a-4e4b-970e-02b863be6ed0",
-                          title: "Wheat",
-                        ),
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/cotton.jfif?alt=media&token=3914e649-11f6-4f40-9771-70b78e87ef1a",
-                          title: "Cotton",
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Crop Management Tools",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/loan%20calculator.png?alt=media&token=c89b687f-f69e-4da7-b4b5-a67758e9447a",
-                          title: "Loan Calculations",
-                        ),
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/transport.png?alt=media&token=23a5d9b8-d585-4d51-a3e9-02eabaff093a",
-                          title: "Transport Calculations",
-                        ),
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/feild%20measurment.png?alt=media&token=0e082754-86ee-4a22-b904-0f48747396af",
-                          title: "Feild Measurment",
-                        ),
-                      ],
+                  Card(
+                    elevation: 5,
+                    surfaceTintColor: Colors.transparent,
+                    child: SizedBox(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const AdminCropsInformations(),
+                              ));
+                        },
+                        leading: const Icon(Icons.add),
+                        title: const Text("Add crops information"),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),

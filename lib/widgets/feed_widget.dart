@@ -139,39 +139,7 @@ class FeedWidget extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    StreamBuilder(
-                        stream: FirebaseFirestore.instance
-                            .collection("user")
-                            .doc(currentUser.uid)
-                            .snapshots(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasError) {
-                            return const CustomCircularLoading();
-                          } else if (!snapshot.hasData) {
-                            return const CustomCircularLoading();
-                          } else if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CustomCircularLoading();
-                          } else {
-                            List savedPosts = snapshot.data!.get('savedPosts');
-                            return IconButton(
-                              padding: const EdgeInsets.all(5),
-                              onPressed: () {
-                                if (savedPosts.contains(post.postId)) {
-                                  feedProvider.savePost(post.postId, true);
-                                } else {
-                                  feedProvider.savePost(post.postId, false);
-                                }
-                              },
-                              icon: Icon(
-                                savedPosts.contains(post.postId)
-                                    ? Icons.bookmark
-                                    : Icons.bookmark_border,
-                                size: 27,
-                              ),
-                            );
-                          }
-                        }),
+                    BookmarkIconButton(post: post),
                   ],
                 ),
               ],
@@ -197,6 +165,53 @@ class FeedWidget extends StatelessWidget {
             title: const Text("Delete post"),
           ),
         );
+      },
+    );
+  }
+}
+
+class BookmarkIconButton extends StatelessWidget {
+  final Post post;
+
+  const BookmarkIconButton({
+    super.key,
+    required this.post,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final feedProvider = Provider.of<FeedProvider>(context, listen: false);
+
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance
+          .collection("user")
+          .doc(currentUser!.uid)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError ||
+            !snapshot.hasData ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CustomCircularLoading();
+        } else {
+          List savedPosts = snapshot.data!.get('savedPosts');
+          return IconButton(
+            padding: const EdgeInsets.all(5),
+            onPressed: () {
+              if (savedPosts.contains(post.postId)) {
+                feedProvider.savePost(post.postId, false);
+              } else {
+                feedProvider.savePost(post.postId, true);
+              }
+            },
+            icon: Icon(
+              savedPosts.contains(post.postId)
+                  ? Icons.bookmark
+                  : Icons.bookmark_border,
+              size: 27,
+            ),
+          );
+        }
       },
     );
   }

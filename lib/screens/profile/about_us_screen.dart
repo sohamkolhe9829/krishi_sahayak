@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:krishi_sahayak/screens/admin/admin_home.dart';
 import 'package:krishi_sahayak/screens/admin/admin_login.dart';
 
 class AboutUs extends StatefulWidget {
@@ -42,10 +43,15 @@ class _AboutUsState extends State<AboutUs> {
               const SizedBox(height: 20),
               GestureDetector(
                 onLongPress: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => AdminLoginScreen(),
+                  //     ));
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AdminLoginScreen(),
+                        builder: (context) => AdminHome(),
                       ));
                 },
                 child: tileCard(context, "App Version", "1.0.0"),

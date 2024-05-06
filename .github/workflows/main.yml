@@ -24,6 +24,7 @@ jobs:
           channel: 'stable'
           architecture: x64
 
+      - run: flutter clean
       - run: flutter build apk --release --split-per-abi
       # - run: |
       #     flutter build ios --no-codesign

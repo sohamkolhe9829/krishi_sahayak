@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:krishi_sahayak/screens/home/feild_measurment.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -105,10 +107,19 @@ class HomeScreen extends StatelessWidget {
                               "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/transport.png?alt=media&token=23a5d9b8-d585-4d51-a3e9-02eabaff093a",
                           title: "Transport Calculations",
                         ),
-                        HomeCardWidget(
-                          imageURL:
-                              "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/feild%20measurment.png?alt=media&token=0e082754-86ee-4a22-b904-0f48747396af",
-                          title: "Feild Measurment",
+                        InkWell(
+                          onTap: () async {
+                            await Geolocator.requestPermission();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => FeildMeasurmentScreen()));
+                          },
+                          child: HomeCardWidget(
+                            imageURL:
+                                "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/feild%20measurment.png?alt=media&token=0e082754-86ee-4a22-b904-0f48747396af",
+                            title: "Feild Measurment",
+                          ),
                         ),
                       ],
                     ),
