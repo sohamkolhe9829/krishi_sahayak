@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:krishi_sahayak/screens/home_container.dart';
 import 'package:krishi_sahayak/screens/language_screen.dart';
+import 'package:krishi_sahayak/utils/constants.dart';
 import 'package:krishi_sahayak/utils/sharedPreferences_service.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,6 +20,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(const Duration(seconds: 2), () async {
       if (await SharedPreferencesServices().getBoolCache("isLogin") == true) {
+        language =
+            await SharedPreferencesServices().getStringCache('language') == 'en'
+                ? 'en'
+                : 'hi';
+
         Navigator.pushReplacement(
           // ignore: use_build_context_synchronously
           context,

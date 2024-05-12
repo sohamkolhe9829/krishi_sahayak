@@ -6,18 +6,13 @@ class FeildMeasurmentProvider with ChangeNotifier {
   Position? currentPosition;
 
 // Define the coordinates of the polygon
-  List<maps_toolkit.LatLng> points = [
-    // maps_toolkit.LatLng(45.153474463955796, 39.33852195739747),
-    // maps_toolkit.LatLng(45.153474463955796, 39.33972358703614),
-    // maps_toolkit.LatLng(45.15252112936569, 39.33972358703614),
-    // maps_toolkit.LatLng(45.1525022138355, 39.3385460972786),
-    // maps_toolkit.LatLng(45.153474463955796, 39.33852195739747)
-  ];
+  List<maps_toolkit.LatLng> points = [];
   num areaInSquareMeters = 0;
   double squareFoot = 0;
   double acre = 0;
   double hectare = 0;
   double bigha = 0;
+  bool isLoading = false;
 
   measureFeild() {
     points.add(
@@ -41,6 +36,8 @@ class FeildMeasurmentProvider with ChangeNotifier {
   }
 
   addPoint() async {
+    isLoading = true;
+    notifyListeners();
     await getCurrentLocation();
     points.add(
       maps_toolkit.LatLng(
@@ -48,6 +45,8 @@ class FeildMeasurmentProvider with ChangeNotifier {
         currentPosition!.longitude,
       ),
     );
+    isLoading = false;
+    notifyListeners();
   }
 
   removePoint(int index) {
@@ -74,6 +73,11 @@ class FeildMeasurmentProvider with ChangeNotifier {
     // Get current position
     currentPosition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
+    notifyListeners();
+  }
+
+  clearPoints() {
+    points = [];
     notifyListeners();
   }
 }

@@ -7,6 +7,11 @@ class SharedPreferencesServices {
     pref.setBool(key, value);
   }
 
+  void setStringCache(String key, String value) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString(key, value);
+  }
+
   void removeBoolCache(String key) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.remove(key);
@@ -15,5 +20,10 @@ class SharedPreferencesServices {
   Future<bool?> getBoolCache(String key) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     return pref.getBool(key);
+  }
+
+  Future<String?> getStringCache(String key) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    return pref.getString(key);
   }
 }

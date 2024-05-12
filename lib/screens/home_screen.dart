@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:gtext/gtext.dart';
 import 'package:krishi_sahayak/screens/home/feild_measurment.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = FirebaseAuth.instance.currentUser;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -17,12 +20,12 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Good Morning,",
+                  const GText(
+                    "Welcome,",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
-                  const Text(
-                    "Soham Kolhe",
+                  Text(
+                    currentUser!.displayName!,
                     style: TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 20),
@@ -35,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const Text(
+                  const GText(
                     "Seasonal crop recommendations",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
@@ -56,13 +59,13 @@ class HomeScreen extends StatelessWidget {
                         HomeCardWidget(
                           imageURL:
                               "https://firebasestorage.googleapis.com/v0/b/krishi-sahayak-190a1.appspot.com/o/monsoon.jfif?alt=media&token=cd55dbf1-fdbb-48df-92b1-1e91daa5468a",
-                          title: "Monsoon",
+                          title: "Rainy",
                         ),
                       ],
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
+                  const GText(
                     "Crops Informations",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
@@ -89,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
+                  const GText(
                     "Crop Management Tools",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
@@ -125,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
+                  const GText(
                     "Quick Access Tools",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
@@ -172,7 +175,7 @@ class HomeCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-        child: Text(
+        child: GText(
           title,
           textAlign: TextAlign.center,
           style: const TextStyle(
@@ -214,7 +217,7 @@ class HomeCardLargeWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-        child: Text(
+        child: GText(
           title,
           textAlign: TextAlign.center,
           style: const TextStyle(

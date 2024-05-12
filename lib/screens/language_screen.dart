@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:krishi_sahayak/screens/login_screen.dart';
+import 'package:krishi_sahayak/utils/constants.dart';
+import 'package:krishi_sahayak/utils/sharedPreferences_service.dart';
 
-class LanguageScreen extends StatelessWidget {
+class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
 
+  @override
+  State<LanguageScreen> createState() => _LanguageScreenState();
+}
+
+class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,6 +33,8 @@ class LanguageScreen extends StatelessWidget {
               const SizedBox(height: 20),
               InkWell(
                 onTap: () {
+                  language = 'hi';
+                  SharedPreferencesServices().setStringCache('language', 'hi');
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -37,7 +46,16 @@ class LanguageScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  language = 'en';
+                  SharedPreferencesServices().setStringCache('language', 'en');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const LoginScreen(),
+                    ),
+                  );
+                },
                 child: LanguageButton(title: "English"),
               ),
             ],

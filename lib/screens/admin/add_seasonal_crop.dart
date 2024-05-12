@@ -94,6 +94,7 @@ class _AddSeasonalCropScreenState extends State<AddSeasonalCropScreen> {
                     Expanded(
                       child: CustomButtonWidget(
                         title: "Upload data",
+                        isLoading: false,
                         callBack: () {
                           adminProvider.addSeasonalCropInformation(
                             context,

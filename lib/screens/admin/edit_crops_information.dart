@@ -144,6 +144,7 @@ class _EditCropsInformationsState extends State<EditCropsInformations> {
                 ),
                 CustomButtonWidget(
                   title: "Update data",
+                  isLoading: false,
                   callBack: () {
                     adminProvider.updateCropsInformation(
                       context,

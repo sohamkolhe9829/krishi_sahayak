@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:gtext/gtext.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:krishi_sahayak/models/post_model.dart';
 import 'package:krishi_sahayak/providers/feed_provider.dart';
 import 'package:krishi_sahayak/screens/feed/post_detail.dart';
@@ -70,15 +72,24 @@ class FeedWidget extends StatelessWidget {
                         )
                       : const SizedBox(),
                 ),
-                SelectableLinkify(
-                  onOpen: launchFeedURL,
-                  text: post.content,
+                // SelectableLinkify(
+                //   onOpen: launchFeedURL,
+                //   text: post.content,
+                //   textAlign: TextAlign.start,
+                //   style: const TextStyle(
+                //     fontSize: 15,
+                //     fontWeight: FontWeight.w500,
+                //   ),
+                // ),
+                GText(
+                  post.content,
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+
                 // const Text(
                 //   "In the article, I have explained the basic structure of Read More in a flutter; you can modify this code according to your choice. This was a small introduction to Read More on user interaction from my side, and it’s working using Flutter.",
                 //   style: TextStyle(

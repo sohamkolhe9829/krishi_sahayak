@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gtext/gtext.dart';
 import 'package:krishi_sahayak/screens/admin/admin_home.dart';
 import 'package:krishi_sahayak/screens/admin/admin_login.dart';
 
@@ -31,7 +32,7 @@ class _AboutUsState extends State<AboutUs> {
                   // child: Image.asset('assets/img/campusway_logo_bg.png'),
                   ),
               const Center(
-                child: Text(
+                child: GText(
                   "Krishi Sahayak (meaning 'Agriculture Helper' in Hindi) is your digital companion! This mobile app provides farmers with easy access to crucial resources, empowering them to make informed decisions and achieve success. \n\nWith Krishi Sahayak, you can access comprehensive crop cultivation guides, tackle pest and disease challenges with image-based assistance from experts, and keep meticulous records of your farm activities, expenses, and harvests. This data-driven approach allows you to optimize operations, minimize risks, and maximize profitability. The app also fosters a sense of community by connecting farmers in your region, enabling knowledge sharing and collaboration. Krishi Sahayak is your one-stop shop for a thriving and sustainable farm.",
                   textAlign: TextAlign.justify,
                   style: TextStyle(

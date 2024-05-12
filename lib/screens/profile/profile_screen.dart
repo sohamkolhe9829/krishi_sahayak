@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gtext/gtext.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:krishi_sahayak/providers/auth_service_provider.dart';
 import 'package:krishi_sahayak/screens/profile/about_us_screen.dart';
+import 'package:krishi_sahayak/screens/profile/change_language.dart';
 import 'package:krishi_sahayak/screens/profile/my_post_screen.dart';
 import 'package:krishi_sahayak/screens/profile/saved_post_screen.dart';
 
@@ -111,6 +114,19 @@ class ProfileScreen extends StatelessWidget {
                 },
               ),
               _buildprofileListTile(
+                title: "Language",
+                context: context,
+                icon: CupertinoIcons.globe,
+                callBack: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const ChangeLanguageScreen(),
+                    ),
+                  );
+                },
+              ),
+              _buildprofileListTile(
                 context: context,
                 title: "Contact US",
                 icon: Icons.contact_mail_rounded,
@@ -173,7 +189,7 @@ class ProfileScreen extends StatelessWidget {
               color: Theme.of(context).textTheme.titleMedium!.color,
             ),
             const SizedBox(width: 15),
-            Text(
+            GText(
               title!,
               style: Theme.of(context).textTheme.titleMedium,
             )

@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:krishi_sahayak/providers/feed_provider.dart';
 import 'package:krishi_sahayak/providers/feild_measurment_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +21,7 @@ class _FeildMeasurmentScreenState extends State<FeildMeasurmentScreen> {
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
+                feildProvider.clearPoints();
               },
               icon: const Icon(Icons.arrow_back_ios)),
         ),
@@ -33,7 +31,7 @@ class _FeildMeasurmentScreenState extends State<FeildMeasurmentScreen> {
             child: Column(
               children: [
                 const Text(
-                  "Note*\n1. Start at the corder of your feild.\n2. Use 'Add current position' to add feild marks for measurment\n",
+                  "Note*\n1. Start at the corder of your feild.\n2. Use 'Add current position' to add feild marks for measurment\n3. This is an approximate conversion factor\n",
                 ),
                 ListView.builder(
                   shrinkWrap: true,
@@ -59,6 +57,7 @@ class _FeildMeasurmentScreenState extends State<FeildMeasurmentScreen> {
                 const SizedBox(height: 10),
                 CustomButtonWidget(
                   title: "Add current position",
+                  isLoading: feildProvider.isLoading,
                   callBack: () {
                     feildProvider.addPoint();
                   },
@@ -66,6 +65,7 @@ class _FeildMeasurmentScreenState extends State<FeildMeasurmentScreen> {
                 const SizedBox(height: 10),
                 CustomButtonWidget(
                   title: "Measure Area",
+                  isLoading: false,
                   callBack: () {
                     feildProvider.measureFeild();
                   },

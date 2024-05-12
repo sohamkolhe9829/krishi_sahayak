@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gtext/gtext.dart';
 import 'package:krishi_sahayak/firebase_options.dart';
 import 'package:krishi_sahayak/screens/splash_screen.dart';
+import 'package:krishi_sahayak/utils/constants.dart';
 import 'package:krishi_sahayak/utils/multi_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GText.init(to: language, enableCaching: false);
     return MaterialApp(
       title: 'Krishi Sahayak',
       theme: ThemeData(

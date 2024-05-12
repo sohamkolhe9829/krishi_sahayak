@@ -139,6 +139,7 @@ class _AddCropsInformationState extends State<AddCropsInformation> {
                 ),
                 CustomButtonWidget(
                   title: "Upload data",
+                  isLoading: false,
                   callBack: () {
                     if (titleController.text != "") {
                       adminProvider.addCropsInformation(

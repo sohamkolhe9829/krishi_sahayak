@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:gtext/gtext.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:krishi_sahayak/providers/auth_service_provider.dart';
 import 'package:krishi_sahayak/screens/home_container.dart';
+import 'package:krishi_sahayak/utils/constants.dart';
 import 'package:krishi_sahayak/utils/functions.dart';
 import 'package:krishi_sahayak/utils/sharedPreferences_service.dart';
 import 'package:provider/provider.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:svg_flutter/svg.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    super.initState();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    GText.init(to: language, enableCaching: false);
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -24,9 +39,10 @@ class LoginScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 60),
                 Image.asset('assets/illuistrations/login.png'),
-                const Padding(
+                // ignore: prefer_const_constructors
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
+                  child: GText(
                     "Let’s expand knowledge of farming with experienced and local farmers ",
                     textAlign: TextAlign.center,
                     style: TextStyle(

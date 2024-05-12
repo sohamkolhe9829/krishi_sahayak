@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gtext/gtext.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:krishi_sahayak/screens/feed/chat_screen.dart';
 import 'package:krishi_sahayak/screens/home_screen.dart';
 import 'package:krishi_sahayak/screens/profile/profile_screen.dart';
+import 'package:krishi_sahayak/utils/constants.dart';
 
 // ignore: must_be_immutable
 class HomeContainer extends StatefulWidget {
@@ -33,6 +35,7 @@ class _HomeContainerState extends State<HomeContainer> {
 
   @override
   Widget build(BuildContext context) {
+    GText.init(to: language, enableCaching: false);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,

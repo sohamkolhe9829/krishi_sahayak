@@ -67,6 +67,7 @@ class AdminLoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 15),
                 CustomButtonWidget(
+                  isLoading: false,
                   title: "Login",
                   callBack: () {
                     if (emailController.text == "krishisahayak@gmail.com") {
