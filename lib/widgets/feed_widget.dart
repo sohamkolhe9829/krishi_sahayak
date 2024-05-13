@@ -10,6 +10,7 @@ import 'package:krishi_sahayak/models/post_model.dart';
 import 'package:krishi_sahayak/providers/feed_provider.dart';
 import 'package:krishi_sahayak/screens/feed/post_detail.dart';
 import 'package:krishi_sahayak/widgets/custom_loading.dart';
+import 'package:krishi_sahayak/widgets/image_preview.dart';
 import 'package:krishi_sahayak/widgets/net_image_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -105,8 +106,18 @@ class FeedWidget extends StatelessWidget {
                         child: PageView.builder(
                           itemCount: post.imageUrls.length,
                           itemBuilder: (context, index) {
-                            return NetImageWidget(
-                                imageURL: post.imageUrls[index]);
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => ImagePreviewWidget(
+                                            imageURL: post.imageUrls[index],
+                                            title: post.ownerName)));
+                              },
+                              child: NetImageWidget(
+                                  imageURL: post.imageUrls[index]),
+                            );
                           },
                         ),
                       ),
